@@ -9,7 +9,6 @@ import numpy as np
 
 
 Targets = ('G010','G000','G012','W49','SgrB2','W51')
-Targets = ('G000','G000')
 Bands = ('0','1','2','3')
 
 band_waves = {0: 1.98, 1: 1.3, 2: 1.0, 3: 0.86}
@@ -45,6 +44,7 @@ for target in Targets:
         indices = (rr1>InnerApp)*(rr1<OuterApp)*(cube==cube)*(bandidx == i)
         medians[i] = np.median(cube[indices])
         mads[i] = np.median(np.abs(cube[indices]-medians[i]))/0.6745
+    mads *= counts
     fluxes -= medians
     figure(figsize=(5,5))
     title(target)
@@ -52,5 +52,5 @@ for target in Targets:
     errorbar(waves,fluxes,yerr=mads)
     xlabel('$\lambda$ (mm)')
     ylabel('Who knows')
-    savefig("%s_sed.pdf" % target,bbox_inches="tight")
+    savefig("%s_sed.png" % target,bbox_inches="tight")
     clf()
