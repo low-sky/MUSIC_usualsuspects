@@ -16,7 +16,6 @@ data_g000_2 = {k:idlsave.read('gal_0.253+0.016/130820_ob2_band%ii_clean_music_20
 data_g012_1 = {k:idlsave.read('gal_012.21-00.10/130820_ob5_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_g012_2 = {k:idlsave.read('gal_012.21-00.10/130820_ob6_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 
-
 datasets = dict(zip(['G010_1','G010_2','G000_1','G000_2','G012_1','G012_2'],
                     [data_g010_1, data_g010_2, data_g000_1, data_g000_2, data_g012_1, data_g012_2]))
 
