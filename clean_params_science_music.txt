@@ -1,0 +1,20 @@
+GAL_031.41+00.31  4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_0.253+0.016   4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+W51               4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_032.80+00.19  4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_010.47+00.03  4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+W49               4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+Sgr_B2            4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+NAME_G29.96-0.02_HMPO 4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+W33               4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+Sgr_Astar         4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_012.21-00.10  4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_024.78+00.08  4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+W43_MM1           4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+W43_MM2           4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+RAFGL_2271        4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_019.61-00.23  4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_350.110+00.0904  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+IRAS_18102-1800   4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+IRAS_18253-1130   4  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
+GAL_019.474+00.1714  module_file_music_20130815_wo_source_flagging.txt           10000    0    0
