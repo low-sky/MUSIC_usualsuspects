@@ -3,7 +3,7 @@ from astropy.io import fits
 import scipy.ndimage
 from astropy.nddata.convolution import make_kernel,convolve
 
-def convolve_and_match(data, objectname):
+def convolve_and_match(data, objectname, clobber=True):
     band3 = data[3].mapstruct.map[0]
     yy1,xx1 = grid1 = np.indices(band3.shape)
 
@@ -15,7 +15,7 @@ def convolve_and_match(data, objectname):
     ffile = fits.PrimaryHDU(data=band3, header=header)
 
     for ii in xrange(4):
-        m = data[ii].mapstruct.map[0] * data[ii].mapstruct['MVPERJYARR'][0][0]
+        m = data[ii].mapstruct.map[0] * data[ii].mapstruct['MVPERJYARR'][0][0] * 1000
         ratio = m.shape[0]/float(band3.shape[0])
         newm = scipy.ndimage.map_coordinates(np.nan_to_num(m), grid1*ratio)
         bads = scipy.ndimage.map_coordinates(np.array(m!=m,dtype='float'), grid1*ratio)
@@ -35,8 +35,8 @@ def convolve_and_match(data, objectname):
 
         ffile.data = newm
 
-        ffile.writeto("%s_Band%i_smooth.fits" % (objectname,ii))
+        ffile.writeto("%s_Band%i_smooth.fits" % (objectname,ii), clobber=clobber)
 
         ffile.data = newm - smm
 
-        ffile.writeto("%s_Band%i_smooth_unsharp.fits" % (objectname,ii))
+        ffile.writeto("%s_Band%i_smooth_unsharp.fits" % (objectname,ii), clobber=clobber)
