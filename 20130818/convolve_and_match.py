@@ -19,7 +19,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
     band3 = data[3].mapstruct.map[0]
     yy1,xx1 = grid1 = np.indices(band3.shape)
 
-    pixscale = data[3].mapstruct['OMEGA_PIX_AM']**0.5 / 60.
+    pixscale = float(data[3].mapstruct['OMEGA_PIX_AM']**0.5 / 60.)
 
     header = fits.Header()
     header['CDELT1'] = pixscale
