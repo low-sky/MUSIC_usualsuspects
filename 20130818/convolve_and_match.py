@@ -11,11 +11,19 @@ data_w51_1   = {k:idlsave.read('w51_bgps/130819_ob1_band%ii_clean_music_20130815
 data_w51_2   = {k:idlsave.read('w51_bgps/130819_ob2_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_sgrb2_1 = {k:idlsave.read('sgr_b2/130819_ob3_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_sgrb2_2 = {k:idlsave.read('sgr_b2/130819_ob4_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
+data_g010_1    = {k:idlsave.read('gal_010.47+00.03/130820_ob3_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
+data_g010_2    = {k:idlsave.read('gal_010.47+00.03/130820_ob4_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
+data_g000_1    = {k:idlsave.read('gal_0.253+0.016/130820_ob1_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
+data_g000_2    = {k:idlsave.read('gal_0.253+0.016/130820_ob2_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
+data_g012_1    = {k:idlsave.read('gal_012.21-00.10/130820_ob5_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 
-datasets = dict(zip(['W49_1','W49_2','W51_1','W51_2','SgrB2_1','SgrB2_2'],(data_w49_1, data_w49_2, data_w51_1, data_w51_2, data_sgrb2_1, data_sgrb2_2)))
+
+datasets = dict(zip(['W49_1','W49_2','W51_1','W51_2','SgrB2_1','SgrB2_2','G010_1','G010_2','G000_1','G000_2','G012_1'],\
+                        (data_w49_1, data_w49_2, data_w51_1, data_w51_2, data_sgrb2_1, \
+                             data_sgrb2_2, data_g010_1, data_g010_2, data_g000_1, data_g000_2, data_g012_1)))
 
 for jj,(k,data) in enumerate(datasets.iteritems()):
-
+    print(jj)
     band3 = data[3].mapstruct.map[0]
     yy1,xx1 = grid1 = np.indices(band3.shape)
 
@@ -33,7 +41,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
         bads = scipy.ndimage.map_coordinates(np.array(m!=m,dtype='float'), grid1*ratio)
         newm[bads>0.5] = np.nan
 
-        beamsize_delta = (np.abs(data[ii].mapstruct['OMEGA_BEAM_AM']-data[0].mapstruct['OMEGA_BEAM_AM'])/np.pi)**0.5
+        beamsize_delta = (np.abs(data[ii].mapstruct['OMEGA_BEAM_AM']-data[0].mapstruct['OMEGA_BEAM_AM'])/np.pi/2)**0.5
         am_per_pix = data[0].mapstruct['OMEGA_PIX_AM']**0.5
         kernelwidth = beamsize_delta/am_per_pix
         if kernelwidth > 0:
