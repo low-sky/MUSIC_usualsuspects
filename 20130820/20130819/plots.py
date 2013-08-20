@@ -57,7 +57,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
         rr = ((xx1-m1.shape[1]/3.)**2 + (yy1-m1.shape[0]/3.)**2)**0.5
         #mask *= rr < 5
 
-        beamsize_delta = (np.abs(data[y].mapstruct['OMEGA_BEAM_AM']-data[x].mapstruct['OMEGA_BEAM_AM'])/np.pi)**0.5
+        beamsize_delta = (np.abs(data[y].mapstruct['OMEGA_BEAM_AM']-data[x].mapstruct['OMEGA_BEAM_AM'])/np.pi/2)**0.5
         am_per_pix = data[y].mapstruct['OMEGA_PIX_AM']**0.5
         kernelwidth = beamsize_delta/am_per_pix
         kernel = make_kernel.make_kernel(m1.shape, kernelwidth=kernelwidth)#, normalize_kernel=np.max)
@@ -92,7 +92,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
 for jj,(k,data) in enumerate(datasets.iteritems()):
     figure(jj+12)
     clf()
-#    suptitle(k)
+    suptitle(k.replace("_"," "))
 
     band3 = data[3].mapstruct.map[0]
     yy1,xx1 = grid1 = np.indices(band3.shape)
@@ -108,7 +108,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
         #kernel = make_kernel.make_kernel(band3.shape, kernelwidth=5)
         #smm = convolve.convolve_fft(newm,kernel, interpolate_nan=True)
 
-        beamsize_delta = (np.abs(data[ii].mapstruct['OMEGA_BEAM_AM']-data[0].mapstruct['OMEGA_BEAM_AM'])/np.pi)**0.5
+        beamsize_delta = (np.abs(data[ii].mapstruct['OMEGA_BEAM_AM']-data[0].mapstruct['OMEGA_BEAM_AM'])/np.pi/2)**0.5
         am_per_pix = data[0].mapstruct['OMEGA_PIX_AM']**0.5
         kernelwidth = beamsize_delta/am_per_pix
         if kernelwidth > 0:
@@ -123,7 +123,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
 for jj,(k,data) in enumerate(datasets.iteritems()):
     figure(jj+12)
     clf()
-    suptitle(k)
+    suptitle(k.replace("_"," "))
 
     band3 = data[3].mapstruct.map[0]
     yy1,xx1 = grid1 = np.indices(band3.shape)
@@ -139,7 +139,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
         #kernel = make_kernel.make_kernel(band3.shape, kernelwidth=5)
         #smm = convolve.convolve_fft(newm,kernel, interpolate_nan=True)
 
-        beamsize_delta = (np.abs(data[ii].mapstruct['OMEGA_BEAM_AM']-data[0].mapstruct['OMEGA_BEAM_AM'])/np.pi)**0.5
+        beamsize_delta = (np.abs(data[ii].mapstruct['OMEGA_BEAM_AM']-data[0].mapstruct['OMEGA_BEAM_AM'])/np.pi/2)**0.5
         am_per_pix = data[0].mapstruct['OMEGA_PIX_AM']**0.5
         kernelwidth = beamsize_delta/am_per_pix
         if kernelwidth > 0:
