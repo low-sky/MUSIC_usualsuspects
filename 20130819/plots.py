@@ -4,24 +4,14 @@ import itertools
 import scipy.ndimage
 from astropy.nddata.convolution import make_kernel,convolve
 
-
 data_w49_1   = {k:idlsave.read('w49/130819_ob5_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_w49_2   = {k:idlsave.read('w49/130819_ob6_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_w51_1   = {k:idlsave.read('w51_bgps/130819_ob1_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_w51_2   = {k:idlsave.read('w51_bgps/130819_ob2_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_sgrb2_1 = {k:idlsave.read('sgr_b2/130819_ob3_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 data_sgrb2_2 = {k:idlsave.read('sgr_b2/130819_ob4_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
-data_g010_1    = {k:idlsave.read('gal_010.47+00.03/130820_ob3_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
-data_g010_2    = {k:idlsave.read('gal_010.47+00.03/130820_ob4_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
-data_g000_1    = {k:idlsave.read('gal_0.253+0.016/130820_ob1_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
-data_g000_2    = {k:idlsave.read('gal_0.253+0.016/130820_ob2_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
-data_g012_1    = {k:idlsave.read('gal_012.21-00.10/130820_ob5_band%ii_clean_music_20130815_map.sav' % k) for k in xrange(4)}
 
-
-datasets = dict(zip(['W49_1','W49_2','W51_1','W51_2','SgrB2_1','SgrB2_2','G010_1','G010_2','G000_1','G000_2','G012_1'],\
-                        (data_w49_1, data_w49_2, data_w51_1, data_w51_2, data_sgrb2_1, \
-                             data_sgrb2_2, data_g010_1, data_g010_2, data_g000_1, data_g000_2, data_g012_1)))
-
+datasets = dict(zip(['W49_1','W49_2','W51_1','W51_2','SgrB2_1','SgrB2_2'],(data_w49_1, data_w49_2, data_w51_1, data_w51_2, data_sgrb2_1, data_sgrb2_2)))
 
 band_waves = {0: 1.98, 1: 1.3, 2: 1.0, 3: 0.86}
 
@@ -39,7 +29,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
 for jj,(k,data) in enumerate(datasets.iteritems()):
     figure(jj+6)
     clf()
-#    suptitle(k)
+    suptitle(k)
     figure(jj+18)
     clf()
 
@@ -92,7 +82,7 @@ for jj,(k,data) in enumerate(datasets.iteritems()):
 for jj,(k,data) in enumerate(datasets.iteritems()):
     figure(jj+12)
     clf()
-#    suptitle(k)
+    suptitle(k)
 
     band3 = data[3].mapstruct.map[0]
     yy1,xx1 = grid1 = np.indices(band3.shape)
