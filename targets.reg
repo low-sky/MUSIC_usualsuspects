@@ -1,0 +1,23 @@
+# Region file format: DS9 version 4.1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+fk5
+point(18:47:34.601,-1:12:42.98) # point=x text={GAL_031.41+00.31}
+point(17:46:09.701,-28:43:31.01) # point=x text={GAL_0.253+0.016}
+point(19:23:42.000,+14:30:33.01) # point=x text={W51}
+point(18:50:31.174,-0:01:57.85) # point=x text={GAL_032.80+00.19}
+point(18:08:38.400,-19:51:51.98) # point=x text={GAL_010.47+00.03}
+point(19:10:14.294,+9:06:15.57) # point=x text={W49}
+point(17:47:20.400,-28:23:07.01) # point=x text={Sgr_B2}
+point(18:46:03.740,-2:39:22.10) # point=x text={NAME_G29.96-0.02_HMPO}
+point(18:14:13.999,-17:55:50.02) # point=x text={W33}
+point(17:45:40.036,-29:00:28.17) # point=x text={Sgr_Astar}
+point(18:12:39.701,-18:24:20.99) # point=x text={GAL_012.21-00.10}
+point(18:36:13.171,-7:12:13.58) # point=x text={GAL_024.78+00.08}
+point(18:47:47.000,-1:54:28.00) # point=cross text={W43-MM1}
+point(18:47:36.700,-2:00:52.00) # point=cross text={W43-MM2}
+point(18:53:18.540,+1:14:57.90) # point=x text={RAFGL_2271}
+point(18:27:38.485,-11:56:36.50) # point=x text={GAL_019.61-00.23}
+point(17:19:26.664,-37:10:38.30) # point=x text={GAL_350.110+00.090}
+point(18:13:12.199,-17:59:35.02) # point=x text={IRAS_18102-1800}
+point(18:28:10.601,-11:28:45.01) # point=x text={IRAS_18253-1130}
+point(18:25:55.161,-11:52:32.51) # point=x text={GAL_019.474+00.171}
