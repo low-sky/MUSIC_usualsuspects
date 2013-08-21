@@ -1,9 +1,10 @@
 import numpy as np
 import pylab as pl
+from mad import MAD
 
 band_waves = {0: 1.98, 1: 1.3, 2: 1.0, 3: 0.86}
 
-def sed_from_dict(data, TestRadius=1.1, InnerApp=20, OuterApp=23):
+def sed_from_dict(data, TestRadius=5.1, InnerApp=10, OuterApp=13):
     """
     TestRadius : float
         Pixel search radius to examine for peak location...
@@ -23,23 +24,14 @@ def sed_from_dict(data, TestRadius=1.1, InnerApp=20, OuterApp=23):
     xcen,ycen = np.unravel_index((np.argmax((rr<TestRadius)*cube[1,:,:])),shape)
     rr = ((yy-ycen)**2 + (xx-xcen)**2)**0.5
 
-    rr1,bandidx = np.meshgrid(rr,xrange(4))
-    rr1.shape = cube.shape
-    bandidx.shape = cube.shape
-
     # not used counts = np.nansum(np.nansum((rr1 < TestRadius)*(cube>0),axis=1),axis=1)
-    fluxes = np.nansum(np.nansum(cube*(rr1 < TestRadius)*(cube>0),axis=1),axis=1)
+    mask = (rr < InnerApp)
+    fluxes = np.nansum(cube[:,mask],axis=1)
+    outermask = (rr > InnerApp) * (rr < OuterApp)
+    background = np.median(cube[:,outermask],axis=1)
+    errors = MAD(cube[:,outermask],axis=1)
 
-    medians = np.zeros(4)
-    mads = np.zeros(4)
-
-    for i in xrange(4):
-        indices = (rr1>InnerApp)*(rr1<OuterApp)*(cube==cube)*(bandidx == i)
-        medians[i] = np.median(cube[indices])
-        mads[i] = np.median(np.abs(cube[indices]-medians[i]))/0.6745
-
-
-    return fluxes,medians,mads
+    return fluxes,background,errors
 
 def plot_sed(fluxes, backgrounds, errors, **kwargs):
     pl.errorbar(band_waves.values(),fluxes-backgrounds,yerr=errors,marker='s', **kwargs)

@@ -39,4 +39,6 @@ def make_plots(dirname, fnames):
 if __name__ == "__main__":
     for dirpath, dirnames, filenames in os.walk('./'):
         if dirpath != './':
+            if 'neptune' in dirpath or 'g34.3' in dirpath:
+                continue
             make_plots(dirpath,filenames)
