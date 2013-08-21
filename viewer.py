@@ -11,3 +11,8 @@ def viewer(data, **kwargs):
     for ii,(k,v) in enumerate(data.iteritems()):
         pl.subplot(2,2,ii+1)
         pl.imshow(v.mapstruct.map[0], **kwargs)
+
+def dictviewer(data, **kwargs):
+    for ii,(k,v) in enumerate(data.iteritems()):
+        pl.subplot(2,2,ii+1)
+        pl.imshow(v, **kwargs)
