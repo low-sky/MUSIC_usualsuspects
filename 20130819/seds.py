@@ -10,10 +10,11 @@ import os
 sys.path.append(os.path.split(os.getcwd())[0])
 from convolve_match_makefits import convolve_and_match
 from sed_from_dict import sed_from_dict,plot_sed
-from viewer import load_data,viewer
+from viewer import load_data
 
 
 def make_plots(dirname, fnames):
+    # get the highest-level directory, assume it is the target source ID
     obj = os.path.split(dirname)[-1]
     for fn in fnames:
         # each band gets listed...

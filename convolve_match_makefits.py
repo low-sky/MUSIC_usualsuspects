@@ -5,6 +5,11 @@ from astropy.nddata.convolution import make_kernel,convolve
 
 def convolve_and_match(data, objectname, clobber=True, writefits=True, unsharpscale=80):
     """
+    Convolve all bands to Band 0 resolution and resample all to Band 3
+    pixelization.  The data values are appropriately scaled after smoothing
+    such that they are in units of mJy/beam, where the beam is the Band 0 beam.
+    Sanity checks on this front are warranted.
+
     Parameters
     ----------
     data : dict of IDLSAVE structs
@@ -16,6 +21,13 @@ def convolve_and_match(data, objectname, clobber=True, writefits=True, unsharpsc
         Write the fits files to disk?
     unsharpscale : float
         Unsharp mask angular scale in arcseconds
+
+    Returns
+    -------
+    smoothdict : dict
+        A dictionary of band number : smoothed & resampled map
+    unsharpdict : dict
+        A dictionary of band number : unsharp-masked map
     """
     smoothed = {}
     unsharped = {}

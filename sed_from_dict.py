@@ -37,3 +37,6 @@ def plot_sed(fluxes, backgrounds, errors, **kwargs):
     pl.errorbar(band_waves.values(),fluxes-backgrounds,yerr=errors,marker='s', **kwargs)
     pl.xlabel('$\lambda$ (mm)')
     pl.ylabel('mJy/beam')
+
+def coadd_aligned_dicts(dict1,dict2):
+    return {k:dict1[k]+dict2[k] for k in dict1}
