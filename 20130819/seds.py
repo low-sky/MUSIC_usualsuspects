@@ -16,6 +16,7 @@ from viewer import load_data
 def make_plots(dirname, fnames):
     # get the highest-level directory, assume it is the target source ID
     obj = os.path.split(dirname)[-1]
+
     for fn in fnames:
         # each band gets listed...
         if 'band0' not in fn:

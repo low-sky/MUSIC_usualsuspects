@@ -6,8 +6,25 @@ band_waves = {0: 1.98, 1: 1.3, 2: 1.0, 3: 0.86}
 
 def sed_from_dict(data, TestRadius=5.1, InnerApp=10, OuterApp=13):
     """
+    Extract SEDs around the peak of the band1 image 
+
+    Parameters
+    ----------
+    data : dict
+        A dictionary containing maps sampled on the same pixel grid, e.g.
+        as output from convolve_and_match
     TestRadius : float
         Pixel search radius to examine for peak location...
+    InnerApp : float
+        Inner aperture radius
+    OuterApp : float
+        Outer aperture radius
+
+    Returns
+    -------
+    fluxes : length-4 array of fluxes (NOT background-subtracted)
+    backgrounds : length-4 array of background median fluxes
+    errors : length-4 array of background median absolute deviation values (scaled to sigma)
     """
     shape = data[0].shape
     cube = np.zeros((len(data),shape[0],shape[1]))
@@ -34,6 +51,9 @@ def sed_from_dict(data, TestRadius=5.1, InnerApp=10, OuterApp=13):
     return fluxes,background,errors
 
 def plot_sed(fluxes, backgrounds, errors, **kwargs):
+    """
+    Trivial SED plotting
+    """
     pl.errorbar(band_waves.values(),fluxes-backgrounds,yerr=errors,marker='s', **kwargs)
     pl.xlabel('$\lambda$ (mm)')
     pl.ylabel('mJy/beam')
